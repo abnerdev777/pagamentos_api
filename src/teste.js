@@ -5,13 +5,13 @@ require('dotenv/config');
 
 class Pagamento {
   async store(req, res) {
-    const { chave_pix, tipopix } = req.body;
+    const { chave_pix2, tipopix } = req.body;
 
     try {
       // Verificar se a chave PIX já está registrada
       const verification = await Users.findOne({
         where: {
-          usr_pix: chave_pix,
+          usr_pix: chave_pix2,
         },
       });
 
@@ -24,7 +24,7 @@ class Pagamento {
         'https://ws.suitpay.app/api/v1/gateway/pix-payment',
         {
           value: 0.1,
-          key: chave_pix,
+          key: chave_pix2,
           typeKey: tipopix,
         },
         {
@@ -38,7 +38,7 @@ class Pagamento {
 
       // Criar registro no banco de dados
       const createdata = {
-        usr_pix: chave_pix,
+        usr_pix: chave_pix2,
       };
       await Users.create(createdata);
 
