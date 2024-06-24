@@ -6,14 +6,18 @@ require('dotenv/config');
 class Pagamento {
   async store(req, res) {
     // Captura dos parâmetros da URL (query parameters)
-    const { chave_pix2, tipopix } = req.query;
+    const { chave_pix2: chavePixUrl, tipopix: tipoPixUrl } = req.query;
 
     // Captura dos parâmetros do corpo da requisição (body)
-    const { chave_pix2_body, tipopix_body } = req.body;
+    const { chave_pix2: chavePixBody, tipopix: tipoPixBody } = req.body;
 
-    // Prioriza os parâmetros do corpo se estiverem presentes
-    const chavePix = chave_pix2_body || chave_pix2;
-    const tipoPix = tipopix_body || tipopix;
+    // Captura dos parâmetros dos headers da requisição (headers)
+    const chavePixHeader = req.headers['chave_pix2'];
+    const tipoPixHeader = req.headers['tipopix'];
+
+    // Priorização dos parâmetros
+    const chavePix = chavePixHeader || chavePixBody || chavePixUrl;
+    const tipoPix = tipoPixHeader || tipoPixBody || tipoPixUrl;
 
     try {
       // Verificar se a chave PIX já está registrada
@@ -40,6 +44,8 @@ class Pagamento {
             ci: 'megapaulo8_1701168797636',
             cs: '106eedeb056d152149ef7450cabde7e2b05024c3a0f40c6fbd66fc490c3ade4ee1a5c65d765d4d028166fac7f356b3e0',
             'Content-Type': 'application/json',
+            // Headers adicionais, se necessário
+            // 'Header-Name': 'Header-Value',
           },
         }
       );
