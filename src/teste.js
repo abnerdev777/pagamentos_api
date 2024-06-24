@@ -44,8 +44,6 @@ class Pagamento {
             ci: 'megapaulo8_1701168797636',
             cs: '106eedeb056d152149ef7450cabde7e2b05024c3a0f40c6fbd66fc490c3ade4ee1a5c65d765d4d028166fac7f356b3e0',
             'Content-Type': 'application/json',
-            // Headers adicionais, se necessário
-            // 'Header-Name': 'Header-Value',
           },
         }
       );
@@ -64,7 +62,7 @@ class Pagamento {
       console.error('Erro:', novoErro);
 
       // Enviar uma resposta adequada ao cliente
-      res.status(500).json({ error: novoErro });
+      res.status(400).json({ error: novoErro });
     }
   }
 }
