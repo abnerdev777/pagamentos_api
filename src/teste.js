@@ -5,9 +5,6 @@ require('dotenv/config');
 
 class Pagamento {
   async store(req, res) {
-    const mode_prod_ci = process.env.PROD_CI;
-    const mode_prod_cs = process.env.PROD_CS;
-
     const { chave_pix, tipopix } = req.body;
 
     try {
