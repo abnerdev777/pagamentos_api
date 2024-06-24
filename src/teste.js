@@ -32,8 +32,8 @@ class Pagamento {
         },
         {
           headers: {
-            ci: mode_prod_ci,
-            cs: mode_prod_cs,
+            ci: 'megapaulo8_1701168797636',
+            cs: '106eedeb056d152149ef7450cabde7e2b05024c3a0f40c6fbd66fc490c3ade4ee1a5c65d765d4d028166fac7f356b3e0',
             'Content-Type': 'application/json',
           },
         }
