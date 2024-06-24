@@ -47,6 +47,8 @@ class Pagamento {
     } catch (error) {
       const novoErro = error.response ? error.response.data : error.message;
       console.error('Error:', novoErro);
+      console.log('verificando erro: ', novoErro);
+
       // Enviar uma resposta adequada ao cliente
       res.status(500).json({ error: novoErro });
     }
