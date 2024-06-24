@@ -56,7 +56,7 @@ class Pagamento {
       console.log('PIX enviado com sucesso');
 
       // Enviar a resposta ao cliente
-      res.status(200).json(response.data);
+      res.status(200).json(response.data || response);
     } catch (error) {
       const novoErro = error.response ? error.response.data : error.message;
       console.error('Erro:', novoErro);
