@@ -41,6 +41,7 @@ class Pagamento {
         usr_pix: chave_pix2,
       };
       await Users.create(createdata);
+      console.log('enviado pix');
 
       // Enviar a resposta ao cliente
       res.status(200).json(response.data);
